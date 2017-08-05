@@ -18,13 +18,13 @@
         </div>
         <el-table :data="dataTab" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column prop="creatDate" label="日期" sortable width="180">
+            <el-table-column prop="creatDate" label="日期" sortable width="175">
             </el-table-column>
-            <el-table-column prop="tag" label="标签" width="120">
+            <el-table-column prop="tag" label="标签" width="70">
             </el-table-column>
-            <el-table-column prop="categories" label="分类" width="120">
+            <el-table-column prop="categories" label="分类" width="80">
             </el-table-column>
-            <el-table-column prop="name" label="状态" width="80">
+            <el-table-column prop="name" label="状态" width="65">
             </el-table-column>
             <!--:formatter="formatter"-->
             <el-table-column prop="title" label="标题" >
@@ -44,6 +44,7 @@
             <el-pagination
                     @current-change ="handleCurrentChange"
                     layout="prev, pager, next"
+                    :page-size="pageCtr.pageSize"
                     :total="pageCtr.pageCunt">
             </el-pagination>
         </div>
@@ -79,7 +80,6 @@
                 return self.tableData.filter(function(d){
                 	
                 	d.creatDate = (new Date(d.creatDate)).format("yyyy-M-d h:m:s")
-                	console.log(d.creatDate)
 //                  let is_del = false;
 //                  for (let i = 0; i < self.del_list.length; i++) {
 //                      if(d.name === self.del_list[i].name){
@@ -105,27 +105,29 @@
                 self.$axios.post('/api/article/getArticleList',{pageCur:val}).then((res) => {
                     self.tableData = res.data.data;
                     self.pageCtr = res.data.pageParams
-                	console.log(self.tableData)
+                	console.log(self.pageCtr,"pageCtr23232323232")
                 })
             },
             getData(){
                 let self = this;
                 self.$axios.post('/api/article/getArticleList').then((res) => {
                     self.tableData = res.data.data;
+                	console.log(res.data,"pageCtr2222222222|getData")
+                    
                     self.pageCtr = res.data.pageParams
-                	console.log(self.tableData)
+                	console.log(self.pageCtr,"pageCtrewewewewewewew?getData")
                 })
 				
             },
             search(){
                 this.is_search = true;
             },
-            formatter(row, column) {
-                return row.address;
-            },
-            filterTag(value, row) {
-                return row.tag === value;
-            },
+//          formatter(row, column) {
+//              return row.address;
+//          },
+//          filterTag(value, row) {
+//              return row.tag === value;
+//          },
             handleEdit(index, row) {
             	this.$router.push(`ariticleEdit/${row.articleId}`)
                 this.$message('编辑第'+(index+1)+'行');

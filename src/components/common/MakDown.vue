@@ -15,7 +15,8 @@
                         <el-option key="HTML" label="HTML" value="HTML"></el-option>
                         <el-option key="JS" label="JS" value="JS"></el-option>
                         <el-option key="CSS" label="CSS" value="CSS"></el-option>
-                        <el-option key="工具" label="工具" value="工具"></el-option>
+                        <el-option key="node" label="node" value="node"></el-option>
+                        <el-option key="教程" label="教程" value="教程"></el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item label="状态：" >
@@ -26,6 +27,7 @@
                         <el-checkbox label="js" name="type"></el-checkbox>
                         <el-checkbox label="html" name="type"></el-checkbox>
                         <el-checkbox label="Es6" name="type"></el-checkbox>
+                        <el-checkbox label="node" name="type"></el-checkbox>
                     </el-checkbox-group>
                 </el-form-item>
                 <el-form-item label="文章描述：" prop="desc">

@@ -9,18 +9,28 @@
         data: function(){
             return {
                 form: {
-                    title: '1232132132142341234',
-                    classify: '1234123412341234',
+                    title: '',
+                    classify: '',
                     status: false,
-                    tags: ['Es6'],
-                    desc: '1234123412341234',
+                    tags: [],
+                    desc: '',
                     content:''
                 },
                 edit: true
             }
         },
         created:function(){
-//      	console.log(this.$route.params);
+        	console.log(this.$route.params);
+			 let self = this;
+                self.$axios.post('/api/article/edit',{id:this.$route.params.id}).then((res) => {
+//                  self.tableData = res.data.data;
+                	self.form.title = res.data.data.title
+                	self.form.classify =  res.data.data.categories
+                	self.form.tags =  [res.data.data.tag]
+                	self.form.desc =  res.data.data.content.substr(0,10)
+                	self.form.content = res.data.data.content
+                })
+
         },
          methods: {
             publish(msg) {
