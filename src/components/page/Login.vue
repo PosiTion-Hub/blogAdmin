@@ -6,8 +6,8 @@
                 <el-form-item prop="username">
                     <el-input v-model="ruleForm.username" placeholder="username"></el-input>
                 </el-form-item>
-                <el-form-item prop="password">
-                    <el-input type="password" placeholder="password" v-model="ruleForm.password" @keyup.enter.native="submitForm('ruleForm')"></el-input>
+                <el-form-item prop="userpwd">
+                    <el-input type="password" placeholder="password" v-model="ruleForm.userpwd" @keyup.enter.native="submitForm('ruleForm')"></el-input>
                 </el-form-item>
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
@@ -17,20 +17,19 @@
         </div>
     </div>
 </template>
-
 <script>
     export default {
         data: function(){
             return {
                 ruleForm: {
                     username: '',
-                    password: ''
+                    userpwd: ''
                 },
                 rules: {
                     username: [
                         { required: true, message: '请输入用户名', trigger: 'blur' }
                     ],
-                    password: [
+                    userpwd: [
                         { required: true, message: '请输入密码', trigger: 'blur' }
                     ]
                 }
@@ -41,8 +40,17 @@
                 const self = this;
                 self.$refs[formName].validate((valid) => {
                     if (valid) {
-                        localStorage.setItem('ms_username',self.ruleForm.username);
-                        self.$router.push('/readme');
+                    	self.$axios.post('/api/user/login',self.ruleForm).then((res) => {
+							if(res.data.status){
+								localStorage.setItem('token',res.data.token);
+								
+								localStorage.setItem('ms_username',res.data.data.username);
+								self.$router.push('/readme');
+							}else{
+								self.$message.error('登录失败 ！！！');
+							}
+		                })
+                       
                     } else {
                         console.log('error submit!!');
                         return false;

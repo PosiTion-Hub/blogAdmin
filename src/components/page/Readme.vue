@@ -2,38 +2,26 @@
     <div>
         <div class="crumbs">
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item><i class="el-icon-setting"></i> 自述</el-breadcrumb-item>
+                <el-breadcrumb-item><i class="el-icon-setting"></i> 自述鸡汤</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
         <div class="ms-doc">
-            <h3>README.md</h3>
+            <h3>每日一点心灵鸡汤！！</h3>
             <article>
-                <h1>manage-system</h1>
-                <p>基于Vue.js 2.x系列 + Element UI 的后台管理系统解决方案</p>
-                <h2>前言</h2>
-                <p>之前在公司用了Vue + Element组件库做了个后台管理系统，基本很多组件可以直接引用组件库的，但是也有一些需求无法满足。像图片裁剪上传、富文本编辑器、图表等这些在后台管理系统中很常见的功能，就需要引用其他的组件才能完成。从寻找组件，到使用组件的过程中，遇到了很多问题，也积累了宝贵的经验。所以我就把开发这个后台管理系统的经验，总结成这个后台管理系统解决方案。</p>
-                <p>该方案作为一套多功能的后台框架模板，适用于绝大部分的后台管理系统（Web Management System）开发。基于vue.js,使用vue-cli脚手架快速生成项目目录，引用Element UI组件库，方便开发快速简洁好看的组件。分离颜色样式，支持手动切换主题色，而且很方便使用自定义主题色。</p>
-                <h2>功能</h2>
-                <el-checkbox disabled checked>Element UI</el-checkbox>
-                <br>
-                <el-checkbox disabled checked>登录/注销</el-checkbox>
-                <br>
-                <el-checkbox disabled checked>表格</el-checkbox>
-                <br>
-                <el-checkbox disabled checked>表单</el-checkbox>
-                <br>
-                <el-checkbox disabled checked>图表</el-checkbox>
-                <br>
-                <el-checkbox disabled checked>富文本编辑器</el-checkbox>
-                <br>
-                <el-checkbox disabled checked>markdown编辑器</el-checkbox>
-                <br>
-                <el-checkbox disabled checked>图片拖拽/裁剪上传</el-checkbox>
-                <br>
-                <el-checkbox disabled checked>支持切换主题色</el-checkbox>
-                <br>
-                <el-checkbox disabled checked>列表拖拽排序</el-checkbox>
-                <br>
+               <ul>
+               	<li>
+               		如果，感到此时的自己很辛苦，那么告诉自己：容易走的都是下坡路。坚持住，因为你正在走上坡路，走过去，你就一定会有进步。如果，你正在埋怨命运不眷顾，开导自己：命，是失败者的借口；运，是成功者的谦词。命运从来都是掌握在自己的手中，埋怨，只是一种懦弱的表现；努力，才是人生的态度。
+               	</li>
+               		<li>
+               			坚持奋斗的人生，在每个人看来，也许很积极，很宝贵。在大街上，每个人为着自己的人生，事业。在奋斗，在努力，在坚持。可是又有几个能成为家喻户晓的人，又有几个能拼搏，奋斗出属于自己的人生。
+               	</li>
+               		<li>
+爱一个人太难，那为什么不等别人爱你呢？什么选择你爱还是爱你，这都是胡扯，人生里只是嫁一个人而已，当然是要选个你爱并且爱你的人，缺一不可。你以为单向的爱情可以，其实错了啊。我们寻寻觅觅那么久的，是找相互热爱的那个人。婚姻是种取暖，必须要相互给温暖。               	</li>
+               		<li>
+把精力用到学习上和实际的工作中，只有不断的用知识充实自己，武装自己的头脑，同事才能认同你，领导更不会小瞧你，社会也不会淘汰你。               	</li>
+               		<li>
+【人生交际四定律】1、沉默定律：遇到不该争的人或事，最好的选择是沉默。2、失忆定律：赶上特殊的情境与环境，最没有后果的回答就是“我忘了”。3、微笑定律：谈话或谈判时遇到了难缠的对手又不好回避时，最好的应对是微笑;4、感怀定律：对方烦躁时递给他一支烟或一杯水，气氛就会缓解。               	</li>
+               </ul>
             </article>
         </div>
 
@@ -92,5 +80,8 @@
     }
     .ms-doc article .el-checkbox{
         margin-bottom: 5px;
+    }
+    .ms-doc li{
+    	padding: 10px;
     }
 </style>
