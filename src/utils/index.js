@@ -40,8 +40,6 @@ Date.prototype.format=function(fmt='yyyy-MM-dd') {
     }         
     return fmt;         
 } 
-
-
 function addZero(n){
 	
 	return n > 9 ? n : '0' + n;
