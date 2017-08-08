@@ -2,18 +2,18 @@
     <div class="sidebar">
         <el-menu :default-active="onRoutes" class="el-menu-vertical-demo" theme="dark" unique-opened router>
             <template v-for="item in items">
-                <template v-if="item.subs">
+                <!--<template v-if="item.subs">
                     <el-submenu :index="item.index">
                         <template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>
                         <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">{{ subItem.title }}
                         </el-menu-item>
                     </el-submenu>
                 </template>
-                <template v-else>
+                <template v-else>-->
                     <el-menu-item :index="item.index">
                         <i :class="item.icon"></i>{{ item.title }}
                     </el-menu-item>
-                </template>
+                <!--</template>-->
             </template>
         </el-menu>
     </div>
@@ -26,21 +26,25 @@
                 items: [
                     {
                         icon: 'el-icon-setting',
-                        index: 'readme',
-                        title: '自述',
+                        index: '/readme',
+                        title: '每日鸡汤',
                     },
                     
                     {
-                        icon: 'el-icon-upload2',
+                        icon: 'el-icon-document',
                         index: '/ariticleList',
                         title: '文章列表'
                     },
                     {
-                        icon: 'el-icon-upload2',
+                        icon: 'el-icon-edit',
                         index: '/ariticleAdd',
                         title: '文章编写'
                     },
-                    
+                    {
+                        icon: 'el-icon-setting',
+                        index: '/setting',
+                        title: '设置'
+                    },
                     
 //                  
 //                  {
@@ -96,7 +100,7 @@
         },
         computed:{
             onRoutes(){
-                return this.$route.path.replace('/','');
+                return this.$route.path
             }
         },
         created:function(){
@@ -112,7 +116,7 @@
     .sidebar{
         display: block;
         position: absolute;
-        width: 250px;
+        width: 180px;
         left: 0;
         top: 70px;
         bottom:0;
