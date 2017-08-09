@@ -16,12 +16,13 @@
                     desc: '',
                     content:''
                 },
-                edit: true
+                edit: true,
+                id: ''
             }
         },
         created:function(){
-        	console.log(this.$route.params);
 			 let self = this;
+			 self.id = this.$route.params.id
                 self.$axios.post('/api/article/edit',{id:this.$route.params.id}).then((res) => {
 //                  self.tableData = res.data.data;
                 	self.form.title = res.data.data.title
@@ -34,6 +35,21 @@
         },
          methods: {
             publish(msg) {
+            	var fmD = this.form;
+            	let params = {
+            		id: this.id,
+            		title: fmD.title,
+            		content: fmD.content,
+            		tag: fmD.tags.join(','),
+            		categories: fmD.classify,
+            		desc: fmD.desc,
+            		status: fmD.status?1:0
+            	}
+            	console.log(params)
+            	this.$axios.post('/api/article/publish',params).then((res) => {
+					console.log(res)
+                })
+            	
             	console.log(msg)
                 this.$message.success('提交成功！');
             },

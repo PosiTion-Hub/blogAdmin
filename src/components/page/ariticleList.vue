@@ -17,19 +17,29 @@
             <el-button type="primary" icon="search" @click="search">搜索</el-button>
         </div>
         <el-table :data="dataTab" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
-            <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column prop="creatDate" label="日期" sortable width="175">
+            <el-table-column type="selection" width="50"   align="center" ></el-table-column>
+            <el-table-column prop="creatDate" header-align="left" align="center" label="日期" sortable width="160">
             </el-table-column>
-            <el-table-column prop="tag" label="标签" width="70">
+           
+            <el-table-column prop="categories" label="分类" width="80"   align="center" >
             </el-table-column>
-            <el-table-column prop="categories" label="分类" width="80">
+            <el-table-column prop="status" label="状态" width="70"  align="center" >
             </el-table-column>
-            <el-table-column prop="name" label="状态" width="65">
+            
+            <el-table-column prop="isDraft" label="草稿" width="70"  align="center" >
+            </el-table-column>
+             <el-table-column prop="tag" label="标签"   width="180" align="center">
+            	<template scope="scope">
+		         	<!-- <div slot="reference" class="name-wrapper">-->
+		            <el-tag type="primary" v-for="tab in scope.row.tag.split(',')">{{ tab }}</el-tag>
+		          <!--</div>-->
+		        
+            	 </template>
             </el-table-column>
             <!--:formatter="formatter"-->
             <el-table-column prop="title" label="标题" >
             </el-table-column>
-            <el-table-column label="操作" width="180">
+            <el-table-column label="操作" width="180"  align="center" >
                 <template scope="scope">
                     <el-button size="small" icon="edit"
                             @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
@@ -48,6 +58,7 @@
                     :total="pageCtr.pageCunt">
             </el-pagination>
         </div>
+        
     </div>
 </template>
 
@@ -80,21 +91,9 @@
                 return self.tableData.filter(function(d){
                 	
                 	d.creatDate = (new Date(d.creatDate)).format("yyyy-M-d h:m:s")
-//                  let is_del = false;
-//                  for (let i = 0; i < self.del_list.length; i++) {
-//                      if(d.name === self.del_list[i].name){
-//                          is_del = true;
-//                          break;
-//                      }
-//                  }
-//                  if(!is_del){
-//                      if(d.address.indexOf(self.select_cate) > -1 && 
-//                          (d.name.indexOf(self.select_word) > -1 ||
-//                          d.address.indexOf(self.select_word) > -1)
-//                      ){
-                            return d;
-//                      }
-//                  }
+                	d.status = d.status == 1 ? '可见': '不可见'
+                	d.isDraft = d.isDraft == 1 ? '是': '否'
+                    return d;
                 })
             }
         },
@@ -105,17 +104,13 @@
                 self.$axios.post('/api/article/getArticleList',{pageCur:val}).then((res) => {
                     self.tableData = res.data.data;
                     self.pageCtr = res.data.pageParams
-                	console.log(self.pageCtr,"pageCtr23232323232")
                 })
             },
             getData(){
                 let self = this;
                 self.$axios.post('/api/article/getArticleList').then((res) => {
                     self.tableData = res.data.data;
-                	console.log(res.data,"pageCtr2222222222|getData")
-                    
                     self.pageCtr = res.data.pageParams
-                	console.log(self.pageCtr,"pageCtrewewewewewewew?getData")
                 })
 				
             },
@@ -135,9 +130,9 @@
             handleDelete(index, row) {
             	let self = this;
             	self.$axios.post('/api/article/delArticle',{id:row.articleId}).then((res) => {
-                    if(res.data.error_code==1){
+                    if(res.data.status==1){
                     	this.$message.error('删除成功');
-                    	self.getData()
+                    	self.handleCurrentChange(self.cur_page)
                     }else{
                     	this.$message.error('删除失败');
                     }
@@ -163,7 +158,19 @@
     }
 </script>
 
-<style scoped>
+<style >
+	
+	.el-table .cell{
+		padding-left: 10px !important;
+		padding-right: 10px !important;
+	}
+	
+	
+	
+	
+	.el-tag+.el-tag {
+    	margin-left: 10px;
+	}
 	.mr{
 		margin: 0 10px;
 	}

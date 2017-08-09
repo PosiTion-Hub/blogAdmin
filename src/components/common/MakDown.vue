@@ -37,7 +37,6 @@
                 	<markdown-editor v-model="form.content" :configs="configs" ref="markdownEditor"></markdown-editor>
                 </el-form-item>
                 
-                
                 <el-form-item>
                     <el-button type="primary" @click="onSubmit">发布</el-button>
                     <el-button  v-show="!isEdit"  @click="onDraft">存为草稿</el-button>
