@@ -18,7 +18,12 @@
         </div>
         <el-table :data="dataTab" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="50"   align="center" ></el-table-column>
-            <el-table-column prop="creatDate" header-align="left" align="center" label="日期" sortable width="160">
+            <el-table-column prop="creatDate" header-align="left" align="center" label="日期" sortable width="170">
+            	<template scope="scope">
+			        <el-icon name="time"></el-icon>
+			        <span>{{ scope.row.creatDate }}</span>
+			      </template>
+            	
             </el-table-column>
            
             <el-table-column prop="categories" label="分类" width="80"   align="center" >
@@ -28,11 +33,11 @@
             
             <el-table-column prop="isDraft" label="草稿" width="70"  align="center" >
             </el-table-column>
-             <el-table-column prop="tag" label="标签"   width="180" align="center">
+            <el-table-column prop="tag" label="标签"   width="180" align="center">
             	<template scope="scope">
-		         	<!-- <div slot="reference" class="name-wrapper">-->
-		            <el-tag type="primary" v-for="tab in scope.row.tag.split(',')">{{ tab }}</el-tag>
-		          <!--</div>-->
+		         	<label slot="reference"  v-for="tab in scope.row.tag" class="name-wrapper">
+		            <el-tag type="primary">{{ tab }}</el-tag>
+		          	</label>
 		        
             	 </template>
             </el-table-column>
@@ -92,7 +97,15 @@
                 	
                 	d.creatDate = (new Date(d.creatDate)).format("yyyy-M-d h:m:s")
                 	d.status = d.status == 1 ? '可见': '不可见'
+                	
                 	d.isDraft = d.isDraft == 1 ? '是': '否'
+//              	var arr = d.tag.split(',')
+//              	var obj = {}
+//              	for(var i =0; i<arr.length;i++){
+//              		obj
+//              	}
+                	
+                	d.tag =  d.tag.split(',')
                     return d;
                 })
             }
@@ -164,13 +177,10 @@
 		padding-left: 10px !important;
 		padding-right: 10px !important;
 	}
-	
-	
-	
-	
-	.el-tag+.el-tag {
-    	margin-left: 10px;
+	.name-wrapper+.name-wrapper{
+		margin-left: 8px;
 	}
+	
 	.mr{
 		margin: 0 10px;
 	}

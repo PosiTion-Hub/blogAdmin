@@ -14,7 +14,7 @@
                     status: false,
                     tags: [],
                     desc: '',
-                    content:''
+                    content:'',
                 },
                 edit: true,
                 id: ''
@@ -29,6 +29,7 @@
                 	self.form.classify =  res.data.data.categories
                 	self.form.tags =  [res.data.data.tag]
                 	self.form.desc =  res.data.data.content.substr(0,10)
+                	self.form.status = res.data.data.status == 1? true: false
                 	self.form.content = res.data.data.content
                 })
 

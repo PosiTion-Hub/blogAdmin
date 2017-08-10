@@ -2,18 +2,18 @@
     <div class="sidebar">
         <el-menu :default-active="onRoutes" class="el-menu-vertical-demo" theme="dark" unique-opened router>
             <template v-for="item in items">
-                <!--<template v-if="item.subs">
+                <template v-if="item.subs">
                     <el-submenu :index="item.index">
                         <template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>
                         <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">{{ subItem.title }}
                         </el-menu-item>
                     </el-submenu>
                 </template>
-                <template v-else>-->
+                <template v-else>
                     <el-menu-item :index="item.index">
                         <i :class="item.icon"></i>{{ item.title }}
                     </el-menu-item>
-                <!--</template>-->
+                </template>
             </template>
         </el-menu>
     </div>
@@ -43,7 +43,22 @@
                     {
                         icon: 'el-icon-setting',
                         index: '/setting',
-                        title: '设置'
+                        title: '设置',
+                        subs: [
+                            {
+                                index: 'basetable',
+                                title: '标签设置'
+                            },
+                            {
+                                index: 'vuetable',
+                                title: '分类设置'
+                            },
+                            
+                            {
+                                index: 'vuetable',
+                                title: '系统设置'
+                            }
+                        ]
                     },
                     
 //                  
@@ -120,6 +135,7 @@
         left: 0;
         top: 70px;
         bottom:0;
+        overflow: hidden;
         background: #2E363F;
     }
     .sidebar > ul {
