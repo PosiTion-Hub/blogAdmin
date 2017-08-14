@@ -10,6 +10,7 @@
             <el-button type="danger" icon="delete" class="handle-del mr10" @click="delAll">批量删除</el-button>
             <el-button type="success" icon="" class="handle-del mr10 mr" @click="delAll">批量发布</el-button>
             <el-select v-model="select_cate" placeholder="选择标签" class="handle-select mr10 ">
+                <el-option key="0" label="全部" value=""></el-option>
                 <el-option key="1" label="javascript" value="javascript"></el-option>
                 <el-option key="2" label="html" value="html"></el-option>
             </el-select>
@@ -112,12 +113,16 @@
         },
         methods: {
             handleCurrentChange(val){
+            	
+            	
             	 let self = this;
-                this.cur_page = val;
-                self.$axios.post('/api/article/getArticleList',{pageCur:val}).then((res) => {
-                    self.tableData = res.data.data;
-                    self.pageCtr = res.data.pageParams
-                })
+            	 this.cur_page = val;
+            	self.search()
+//              
+//              self.$axios.post('/api/article/getArticleList',{pageCur:val}).then((res) => {
+//                  self.tableData = res.data.data;
+//                  self.pageCtr = res.data.pageParams
+//              })
             },
             getData(){
                 let self = this;
@@ -128,7 +133,18 @@
 				
             },
             search(){
-                this.is_search = true;
+            	let self = this;
+                self.$axios.post('/api/article/searchArticle',{
+                	pageCur:self.cur_page,
+                	keyword: self.select_word,
+                	categories: self.select_cate
+                }).then((res) => {
+                    self.tableData = res.data.data;
+                    self.pageCtr = res.data.pageParams
+                })
+				
+            	
+                
             },
 //          formatter(row, column) {
 //              return row.address;
