@@ -115,7 +115,8 @@
         },
         computed:{
             onRoutes(){
-                return this.$route.path
+            	console.log(`/${this.$route.path.split('/')[1]}`)
+                return `/${this.$route.path.split('/')[1]}`
             }
         },
         created:function(){

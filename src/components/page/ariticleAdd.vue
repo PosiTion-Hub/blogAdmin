@@ -87,6 +87,23 @@
                 this.$message.success('提交成功！');
             },
             onDraft(msg){
+            	var fmD = this.form;
+            	let params = {
+            		title: fmD.title,
+            		content: fmD.content,
+            		tag: fmD.tags.join(','),
+            		isDraft: 1,
+            		categories: fmD.classify,
+            		desc: fmD.desc,
+            		status: fmD.status?1:0
+            	}
+            	console.log(params)
+            	this.$axios.post('/api/article/publish',params).then((res) => {
+					console.log(res)
+                })
+            	
+            	
+            	
             	this.$message.success('提2功！');
             }
         },

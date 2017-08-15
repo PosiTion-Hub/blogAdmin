@@ -27,7 +27,7 @@
 //                  self.tableData = res.data.data;
                 	self.form.title = res.data.data.title
                 	self.form.classify =  res.data.data.categories
-                	self.form.tags =  [res.data.data.tag]
+                	self.form.tags =  res.data.data.tag.split(',')
                 	self.form.desc =  res.data.data.content.substr(0,10)
                 	self.form.status = res.data.data.status == 1? true: false
                 	self.form.content = res.data.data.content
