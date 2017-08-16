@@ -29,7 +29,7 @@ module.exports = {
         assetsPublicPath: '/',
         proxyTable: {
             '/api':{
-                target: 'http://127.0.0.1:8889',  //'http://192.168.1.108:8888',  //http://192.168.1.108:8888 home ip  //work ip  10.100.1.235
+                target: 'http://127.0.0.1:8888',  //'http://192.168.1.108:8888',  //http://192.168.1.108:8888 home ip  //work ip  10.100.1.235
                 changeOrigin:true,
                 pathRewrite:{
                     '/api':'/api'
