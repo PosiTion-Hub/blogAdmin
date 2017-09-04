@@ -33,6 +33,14 @@ export default new Router({
                     path: '/ariticleAdd',
                     component: resolve => require(['../components/page/ariticleAdd.vue'], resolve)
                 },
+                 {
+                    path: '/classIfy',
+                    component: resolve => require(['../components/page/classIfySetting.vue'], resolve)
+                },
+                {
+                    path: '/tag',
+                    component: resolve => require(['../components/page/tagSetting.vue'], resolve)
+                },
 //            '  {
 //                  path: '/vuetable',
 //                  component: resolve => require(['../components/page/VueTable.vue'], resolve)     // vue-datasource组件
