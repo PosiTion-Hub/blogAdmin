@@ -41,6 +41,10 @@ export default new Router({
                     path: '/tag',
                     component: resolve => require(['../components/page/tagSetting.vue'], resolve)
                 },
+                 {
+                    path: '/setting',
+                    component: resolve => require(['../components/page/setting.vue'], resolve)
+                },
 //            '  {
 //                  path: '/vuetable',
 //                  component: resolve => require(['../components/page/VueTable.vue'], resolve)     // vue-datasource组件

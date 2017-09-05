@@ -46,16 +46,16 @@
                         title: '设置',
                         subs: [
                             {
-                                index: 'basetable',
+                                index: '/tag',
                                 title: '标签设置'
                             },
                             {
-                                index: 'vuetable',
+                                index: '/classify',
                                 title: '分类设置'
                             },
                             
                             {
-                                index: 'vuetable',
+                                index: 'setting',
                                 title: '系统设置'
                             }
                         ]
