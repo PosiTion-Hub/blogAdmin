@@ -33,12 +33,12 @@ export default new Router({
                     path: '/ariticleAdd',
                     component: resolve => require(['../components/page/ariticleAdd.vue'], resolve)
                 },
-                 {
-                    path: '/classIfy',
-                    component: resolve => require(['../components/page/classIfySetting.vue'], resolve)
-                },
+//               {
+//                  path: '/classIfy',
+//                  component: resolve => require(['../components/page/classIfySetting.vue'], resolve)
+//              },
                 {
-                    path: '/tag',
+                    path: '/tagify',
                     component: resolve => require(['../components/page/tagSetting.vue'], resolve)
                 },
                  {

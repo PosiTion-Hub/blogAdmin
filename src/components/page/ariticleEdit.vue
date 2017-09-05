@@ -28,7 +28,7 @@
                 	self.form.title = res.data.data.title
                 	self.form.classify =  res.data.data.categories
                 	self.form.tags =  res.data.data.tag.split(',')
-                	self.form.desc =  res.data.data.content.substr(0,10)
+                	self.form.desc =  res.data.data.desc
                 	self.form.status = res.data.data.status == 1? true: false
                 	self.form.content = res.data.data.content
                 })
@@ -36,7 +36,8 @@
         },
          methods: {
             publish(msg) {
-            	var fmD = this.form;
+            	let self = this;
+            	let fmD = this.form;
             	let params = {
             		id: this.id,
             		title: fmD.title,
@@ -46,9 +47,13 @@
             		desc: fmD.desc,
             		status: fmD.status?1:0
             	}
-            	console.log(params)
             	this.$axios.post('/api/article/publish',params).then((res) => {
-					console.log(res)
+					if(res.data.status == 1){
+						self.$message.success('保存成功！');
+						setTimeout(()=>{self.$router.push("/ariticleList")},2000)
+					}else{
+						self.$message.success('保存失败！');
+					}
                 })
             	
             	console.log(msg)

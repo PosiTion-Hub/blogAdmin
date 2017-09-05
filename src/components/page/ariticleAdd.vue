@@ -55,7 +55,7 @@
                     title: '',
                     classify: '',
                     status: true,
-                    tags: ['html'],
+                    tags: [],
                     desc: '',
                     content:''
                 },
@@ -67,7 +67,8 @@
         },
          methods: {
             publish(msg) {
-            	var fmD = this.form;
+            	let self = this;
+            	let fmD = this.form;
             	let params = {
             		title: fmD.title,
             		content: fmD.content,
@@ -77,14 +78,19 @@
             		status: fmD.status?1:0
             	}
             	console.log(params)
-            	this.$axios.post('/api/article/publish',params).then((res) => {
-					console.log(res)
+            	self.$axios.post('/api/article/publish',params).then((res) => {
+					if(res.data.status == 1){
+						self.$message.success('保存成功！');
+						setTimeout(()=>{self.$router.push("/ariticleList")},2000)
+					}else{
+						self.$message.success('保存失败！');
+					}
                 })
             	
             	
             	
             	
-                this.$message.success('提交成功！');
+                
             },
             onDraft(msg){
             	var fmD = this.form;

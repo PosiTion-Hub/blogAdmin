@@ -46,16 +46,16 @@
                         title: '设置',
                         subs: [
                             {
-                                index: '/tag',
-                                title: '标签设置'
+                                index: '/tagify',
+                                title: '标签|分类设置'
                             },
-                            {
-                                index: '/classify',
-                                title: '分类设置'
-                            },
+//                          {
+//                              index: '/classify',
+//                              title: '分类设置'
+//                          },
                             
                             {
-                                index: 'setting',
+                                index: '/setting',
                                 title: '系统设置'
                             }
                         ]
@@ -115,7 +115,7 @@
         },
         computed:{
             onRoutes(){
-            	console.log(`/${this.$route.path.split('/')[1]}`)
+//          	console.log(`/${this.$route.path.split('/')[1]}`)
                 return `/${this.$route.path.split('/')[1]}`
             }
         },

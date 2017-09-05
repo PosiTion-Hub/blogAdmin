@@ -12,11 +12,14 @@
                 </el-form-item>
                 <el-form-item label="分类：" prop="classify">
                     <el-select v-model="form.classify" placeholder="请选择">
-                        <el-option key="HTML" label="HTML" value="HTML"></el-option>
+                    	<template v-for="ify in classifyData">
+                    		<el-option :key="ify.classIfyName" :label="ify.classIfyName" :value="ify.classIfyName"></el-option>
+                    	</template>
+                        <!--<el-option key="HTML" label="HTML" value="HTML"></el-option>
                         <el-option key="JS" label="JS" value="JS"></el-option>
                         <el-option key="CSS" label="CSS" value="CSS"></el-option>
                         <el-option key="node" label="node" value="node"></el-option>
-                        <el-option key="教程" label="教程" value="教程"></el-option>
+                        <el-option key="教程" label="教程" value="教程"></el-option>-->
                     </el-select>
                 </el-form-item>
                 <el-form-item label="状态：" >
@@ -24,10 +27,12 @@
                 </el-form-item>
                 <el-form-item label="标签：" prop="tags">
                     <el-checkbox-group v-model="form.tags">
-                        <el-checkbox label="js" name="type"></el-checkbox>
-                        <el-checkbox label="html" name="type"></el-checkbox>
+					<template v-for="item in tagData">
+                    	<el-checkbox  :label="item.tagName" name="type" ></el-checkbox>
+					</template>
+                        <!--<el-checkbox label="html" name="type"></el-checkbox>
                         <el-checkbox label="Es6" name="type"></el-checkbox>
-                        <el-checkbox label="node" name="type"></el-checkbox>
+                        <el-checkbox label="node" name="type"></el-checkbox>-->
                     </el-checkbox-group>
                 </el-form-item>
                 <el-form-item label="文章描述：" prop="desc">
@@ -64,6 +69,8 @@
                     }
                 },
                 form: {},
+                classifyData:[],
+                tagData:[],
                 rules: {
 		          title: [
 //		            { required: true, message: '填写标题！！！', trigger: 'blur' },
@@ -88,12 +95,18 @@
         created:function(){
         	this.form = this.parentForm  
         	this.isEdit = this.isEdit
+        	this.tagDataTab();
+        	this.classifyDataTab();
+        },
+        computed: {
+        	
         },
          methods: {
             onSubmit() {
             	this.$emit('save',this.form);
             },
             onDraft() {
+            	console.log(this.form)
             	this.$emit('Draft',this.form);
             },
             onRest(formName) {
@@ -104,6 +117,19 @@
             onCancel(form){
             	this.$router.push('/ariticleList');
 //          	this.$refs[formName].resetFields();
+            },
+            tagDataTab(){
+                const self = this;
+                self.$axios.post('/api/tag/get').then((res) => {
+                    self.tagData = res.data.data;
+                })
+                
+           	},
+           	classifyDataTab(){
+           		const self = this;
+                self.$axios.post('/api/classify/get').then((res) => {
+                    self.classifyData = res.data.data;
+                })
             }
             
         },
