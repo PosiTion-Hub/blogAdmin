@@ -30,9 +30,7 @@
 					<template v-for="item in tagData">
                     	<el-checkbox  :label="item.tagName" name="type" ></el-checkbox>
 					</template>
-                        <!--<el-checkbox label="html" name="type"></el-checkbox>
-                        <el-checkbox label="Es6" name="type"></el-checkbox>
-                        <el-checkbox label="node" name="type"></el-checkbox>-->
+                      
                     </el-checkbox-group>
                 </el-form-item>
                 <el-form-item label="文章描述：" prop="desc">

@@ -100,16 +100,7 @@
 //                          }
 //                      ]
 //                  },
-//                  {
-//                      icon: 'el-icon-star-on',
-//                      index: 'basecharts',
-//                      title: '图表'
-//                  },
-//                  {
-//                      icon: 'el-icon-upload2',
-//                      index: 'drag',
-//                      title: '拖拽'
-//                  }
+//                
                 ]
             }
         },
