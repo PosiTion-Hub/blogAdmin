@@ -15,11 +15,7 @@
                     	<template v-for="ify in classifyData">
                     		<el-option :key="ify.classIfyName" :label="ify.classIfyName" :value="ify.classIfyName"></el-option>
                     	</template>
-                        <!--<el-option key="HTML" label="HTML" value="HTML"></el-option>
-                        <el-option key="JS" label="JS" value="JS"></el-option>
-                        <el-option key="CSS" label="CSS" value="CSS"></el-option>
-                        <el-option key="node" label="node" value="node"></el-option>
-                        <el-option key="教程" label="教程" value="教程"></el-option>-->
+                      
                     </el-select>
                 </el-form-item>
                 <el-form-item label="状态：" >
@@ -30,9 +26,7 @@
 					<template v-for="item in tagData">
                     	<el-checkbox  :label="item.tagName" name="type" ></el-checkbox>
 					</template>
-                        <!--<el-checkbox label="html" name="type"></el-checkbox>
-                        <el-checkbox label="Es6" name="type"></el-checkbox>
-                        <el-checkbox label="node" name="type"></el-checkbox>-->
+                       
                     </el-checkbox-group>
                 </el-form-item>
                 <el-form-item label="文章描述：" prop="desc">
