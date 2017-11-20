@@ -78,7 +78,10 @@
             	}
             	console.log(params)
             	this.$axios.post('/api/article/publish',params).then((res) => {
-					console.log(res)
+					if(res.data.status == 2){
+                		self.$router.push("/login")
+                	}
+                	
                 })
             	
             	
@@ -99,7 +102,10 @@
             	}
             	console.log(params)
             	this.$axios.post('/api/article/publish',params).then((res) => {
-					console.log(res)
+					if(res.data.status == 2){
+                		self.$router.push("/login")
+                	}
+                	
                 })
             	
             	

@@ -79,6 +79,10 @@
             	}
             	console.log(params)
             	self.$axios.post('/api/article/publish',params).then((res) => {
+            		if(res.data.status == 2){
+                		self.$router.push("/login")
+                	}
+                	
 					if(res.data.status == 1){
 						self.$message.success('保存成功！');
 						setTimeout(()=>{self.$router.push("/ariticleList")},2000)
@@ -105,12 +109,15 @@
             	}
             	console.log(params)
             	this.$axios.post('/api/article/publish',params).then((res) => {
-					console.log(res)
+					if(res.data.status == 2){
+                		self.$router.push("/login")
+                	}
+                	
                 })
             	
             	
             	
-            	this.$message.success('提2功！');
+            	this.$message.success('提交成功！');
             }
         },
         components: {

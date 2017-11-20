@@ -43,7 +43,6 @@
                     	self.$axios.post('/api/user/login',self.ruleForm).then((res) => {
 							if(res.data.status){
 								localStorage.setItem('token',res.data.token);
-								
 								localStorage.setItem('ms_username',res.data.data.username);
 								self.$router.push('/readme');
 							}else{

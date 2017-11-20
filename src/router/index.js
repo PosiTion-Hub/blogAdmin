@@ -3,15 +3,22 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 
+
+
+
 export default new Router({
-	hashbang: false, history: true,
+	hashbang: false,
+	history: true,
+	mode: 'history',
     routes: [
         {
             path: '/',
-            redirect: '/login'
+            redirect: '/login',
+            name:'login'
         },
         {
             path: '/readme',
+            name: 'readme',
             component: resolve => require(['../components/common/Home.vue'], resolve),
             children:[
                 {

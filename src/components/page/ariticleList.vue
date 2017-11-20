@@ -117,6 +117,11 @@
             getData(){
                 let self = this;
                 self.$axios.post('/api/article/getArticleList').then((res) => {
+                	
+                	if(res.data.status == 2){
+                		self.$router.push("/login")
+                	}
+                	
                     self.tableData = res.data.data;
                     self.pageCtr = res.data.pageParams
                 })
@@ -129,6 +134,9 @@
                 	keyword: self.select_word,
                 	categories: self.select_cate
                 }).then((res) => {
+                	if(res.data.status == 2){
+                		self.$router.push("/login")
+                	}
                     self.tableData = res.data.data;
                     self.pageCtr = res.data.pageParams
                 })
@@ -136,6 +144,9 @@
             classifyDataTab(){
            		const self = this;
                 self.$axios.post('/api/classify/get').then((res) => {
+                	if(res.data.status == 2){
+                		self.$router.push("/login")
+                	}
                     self.classifyData = res.data.data;
                 })
             },
@@ -151,6 +162,9 @@
 			        }).then(() => {
 			        	
 			        self.$axios.post('/api/article/delArticle',{id:row.articleId}).then((res) => {
+			        	if(res.data.status == 2){
+	                		self.$router.push("/login")
+	                	}
 	                    if(res.data.status==1){
 	                    	self.$message({
 					            type: 'success',

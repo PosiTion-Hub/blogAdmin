@@ -107,6 +107,11 @@
            	getTagData(){
                 let self = this;
                 self.$axios.post('/api/tag/get').then((res) => {
+                	if(res.data.status == 2){
+                  		self.$router.push({ path: '/login' })
+                  		return
+                	}
+                	
                     self.tagDataList = res.data.data;
                     self.isLoading = false
                 })
@@ -115,6 +120,11 @@
             getCalssifyData(){
                 let self = this;
                 self.$axios.post('/api/classify/get').then((res) => {
+                	if(res.data.status == 2){
+                		self.$router.push("/login")
+                		return
+                	} 
+                	
                     self.classifyDataList = res.data.data;
                 })
 				
@@ -135,7 +145,13 @@
 			          type: 'warning'
 			        }).then(() => {
 	            	self.$axios.post(`/api/${str}/removeById`,params).then((res) => {
+	            		if(res.data.status == 2){
+	            			
+	                		self.$router.push("/login")
+	                	}
+                	
 	            	 	if(res.data.status == 1){
+	            	 		
 	            	 		c ? self.getCalssifyData() : self.getTagData()
 	            	 		self.$message({
 					            type: 'success',
@@ -172,6 +188,10 @@
 	            	}
 		        	
 		        	self.$axios.post(`/api/${str}/add`,params).then((res) => {
+		        		if(res.data.status == 2){
+	                		self.$router.push("/login")
+	                	}
+                	
 	            	 	if(res.data.status == 1){
 	            	 		a ? self.getCalssifyData() : self.getTagData()
 		        			self.$message({

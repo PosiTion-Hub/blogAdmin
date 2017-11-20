@@ -24,6 +24,10 @@
 			 let self = this;
 			 self.id = this.$route.params.id
                 self.$axios.post('/api/article/edit',{id:this.$route.params.id}).then((res) => {
+                	if(res.data.status == 2){
+                		self.$router.push("/login")
+                	}
+                	
 //                  self.tableData = res.data.data;
                 	self.form.title = res.data.data.title
                 	self.form.classify =  res.data.data.categories
@@ -48,6 +52,10 @@
             		status: fmD.status?1:0
             	}
             	this.$axios.post('/api/article/publish',params).then((res) => {
+            		if(res.data.status == 2){
+                		self.$router.push("/login")
+                	}
+                	
 					if(res.data.status == 1){
 						self.$message.success('保存成功！');
 						setTimeout(()=>{self.$router.push("/ariticleList")},2000)

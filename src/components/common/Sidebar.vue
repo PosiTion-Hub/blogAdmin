@@ -59,62 +59,20 @@
                                 title: '系统设置'
                             }
                         ]
-                    },
-                    
-//                  
-//                  {
-//                      icon: 'el-icon-menu',
-//                      index: '2',
-//                      title: '表格',
-//                      subs: [
-//                          {
-//                              index: 'basetable',
-//                              title: '基础表格'
-//                          },
-//                          {
-//                              index: 'vuetable',
-//                              title: 'Vue表格组件'
-//                          }
-//                      ]
-//                  },
-//                  {
-//                      icon: 'el-icon-date',
-//                      index: '3',
-//                      title: '表单',
-//                      subs: [
-//                          {
-//                              index: 'baseform',
-//                              title: '基本表单'
-//                          },
-//                          {
-//                              index: 'vueeditor',
-//                              title: '编辑器'
-//                          },
-//                          {
-//                              index: 'markdown',
-//                              title: 'markdown'
-//                          },
-//                          {
-//                              index: 'upload',
-//                              title: '文件上传'
-//                          }
-//                      ]
-//                  },
-//                
+                    }
                 ]
             }
         },
         computed:{
             onRoutes(){
-//          	console.log(`/${this.$route.path.split('/')[1]}`)
+            	
+            	if(this.$route.path.split('/')[1] == 'ariticleEdit'){
+            		return '/ariticleList'
+            	}
                 return `/${this.$route.path.split('/')[1]}`
             }
         },
         created:function(){
-//      	console.log(this.$route.params);
-//      	
-//      	
-//      	console.log(this.status)
         }
     }
 </script>

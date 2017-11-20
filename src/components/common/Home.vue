@@ -15,9 +15,6 @@
     	data(){
     		return {
     			
-    			a: {
-    				b:1
-    			}
     		}
     	},
         components:{
@@ -28,3 +25,12 @@
         }
     }
 </script>
+
+<style type="text/css">
+	.router-fade-enter-active, .router-fade-leave-active {
+	  	transition: opacity .3s;
+	}
+	.router-fade-enter, .router-fade-leave-active {
+	  	opacity: 0;
+	}
+</style>
