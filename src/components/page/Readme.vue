@@ -9,7 +9,8 @@
             <h3>每日一点心灵鸡汤！！</h3>
             <article>
                <ul>
-               	<li>
+               	<input type="file" accept="*/jpg" name="" id="" value="测试上传图片" @change="publish" />
+               	<li >
                		如果，感到此时的自己很辛苦，那么告诉自己：容易走的都是下坡路。坚持住，因为你正在走上坡路，走过去，你就一定会有进步。如果，你正在埋怨命运不眷顾，开导自己：命，是失败者的借口；运，是成功者的谦词。命运从来都是掌握在自己的手中，埋怨，只是一种懦弱的表现；努力，才是人生的态度。
                	</li>
                		<li>
@@ -32,6 +33,35 @@
     export default {
         data: function(){
             return {}
+        },
+        created:function(){
+			
+        },
+        methods: {
+//          async publish(msg) {
+//          	console.log(111)
+//          	var data = await self.$axios.post('/api/upload/file')
+//          }
+            
+             publish(e) {
+            	
+            	console.log(this)
+            	
+            	  let file = e.target.files[0];           
+		          let param = new FormData(); //创建form对象
+		          param.append('file',file,file.name);//通过append向form对象添加数据
+		          param.append('chunk','0');//添加form表单中其他数据
+		          console.log(param.get('file')); //FormData私有类对象，访问不到，可以通过get判断值是否传进去
+		          let config = {
+		            headers:{'Content-Type':'multipart/form-data'}
+		          };  //添加请求头
+		          this.$axios.post('/api/upload/file',param,config)
+		          .then(response=>{
+		            console.log(response.data);
+		          })  
+            	
+            	
+            }
         }
     }
 </script>
